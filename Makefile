@@ -6,9 +6,11 @@
 #    By: rgerdzhi <rgerdzhi@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/31 16:05:39 by rgerdzhi          #+#    #+#              #
-#    Updated: 2024/08/05 20:19:12 by rgerdzhi         ###   ########.fr        #
+#    Updated: 2024/08/06 18:52:30 by rgerdzhi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+LIB_DIR = libft/
 
 SRCS = ft_printf.c 
 
@@ -24,31 +26,32 @@ CC = cc
 
 CFLAGS = -Wall -Werror -Wextra
 
+LIBFT = $(LIB_DIR)libft.a
+
 # **************************************************************************** #
 #                                 RULES                                        #
 # **************************************************************************** #
 
 all: $(NAME)
 
-
-$(NAME): $(OBJ)
+$(NAME): $(LIBFT) $(OBJ)
+	cp $(LIBFT) $(NAME)
 	ar -q $(NAME) $(OBJ)
 
-%.o: %.c Makefile libft.h
-	$(CC) $(CFLAGS) -c $< -o $@
+$(LIBFT):
+	@make -C $(LIB_DIR)
 
-bonus: $(OBJ) $(OBJ_B)
-	ar -q $(NAME) $(OBJ) $(OBJ_B)
-	@touch bonus
+%.o: %.c $(PRINTF_DIR) ft_printf.h Makefile libft.h
+	$(CC) $(CFLAGS) -I $(LIB_DIR) -c $< -o $@
 
 clean:
-	rm -f $(OBJ) $(OBJ_B)
-	rm -f bonus
+	@make -C $(LIB_DIR) clean
+	rm -f $(OBJ)
 
 fclean: clean
+	@make -C $(LIB_DIR) fclean
 	rm -f $(NAME)
 
 re: fclean all
 
 .PHONY: all clean fclean re
-
