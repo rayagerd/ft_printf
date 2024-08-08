@@ -6,7 +6,7 @@
 /*   By: rgerdzhi <rgerdzhi@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 15:19:54 by rgerdzhi          #+#    #+#             */
-/*   Updated: 2024/08/06 20:41:30 by rgerdzhi         ###   ########.fr       */
+/*   Updated: 2024/08/07 18:25:37 by rgerdzhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,5 @@
 int		ft_printf(char const *str, ...);
 // Declarations from ft_printf_utils.c
 int		ft_putchar(char c);
+int		ft_putstr(char *s);
 #endif
