@@ -6,13 +6,13 @@
 #    By: rgerdzhi <rgerdzhi@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/31 16:05:39 by rgerdzhi          #+#    #+#              #
-#    Updated: 2024/08/06 18:52:30 by rgerdzhi         ###   ########.fr        #
+#    Updated: 2024/08/13 18:59:13 by rgerdzhi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 LIB_DIR = libft/
 
-SRCS = ft_printf.c 
+SRCS = ft_printf.c ft_printf_utils.c 
 
 OBJ = $(SRCS:.c=.o)
 
