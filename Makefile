@@ -6,7 +6,7 @@
 #    By: rgerdzhi <rgerdzhi@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/31 16:05:39 by rgerdzhi          #+#    #+#              #
-#    Updated: 2024/08/13 18:59:13 by rgerdzhi         ###   ########.fr        #
+#    Updated: 2024/08/14 18:36:49 by rgerdzhi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,10 @@ $(LIBFT):
 %.o: %.c $(PRINTF_DIR) ft_printf.h Makefile libft.h
 	$(CC) $(CFLAGS) -I $(LIB_DIR) -c $< -o $@
 
+test: $(NAME)
+	cc $(NAME)
+	./a.out
+
 clean:
 	@make -C $(LIB_DIR) clean
 	rm -f $(OBJ)
@@ -51,6 +55,7 @@ clean:
 fclean: clean
 	@make -C $(LIB_DIR) fclean
 	rm -f $(NAME)
+	rm -f ./a.out
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 /*   By: rgerdzhi <rgerdzhi@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 20:27:26 by rgerdzhi          #+#    #+#             */
-/*   Updated: 2024/08/13 19:02:48 by rgerdzhi         ###   ########.fr       */
+/*   Updated: 2024/08/14 20:19:59 by rgerdzhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -26,7 +26,7 @@ int	ft_putstr(char *s)
 
 	i = 0;
 	if (!s)
-		return ("(null)");
+		s = "(null)";
 	while (s[i])
 	{
 		if (write(1, &s[i], 1) == -1)
@@ -67,4 +67,4 @@ long	ft_putnbr(long n)
 }
 
 //%x && %X
-long	ft_puthex
+//long	ft_puthex;
