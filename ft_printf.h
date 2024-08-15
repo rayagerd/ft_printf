@@ -6,7 +6,7 @@
 /*   By: rgerdzhi <rgerdzhi@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 15:19:54 by rgerdzhi          #+#    #+#             */
-/*   Updated: 2024/08/13 18:58:32 by rgerdzhi         ###   ########.fr       */
+/*   Updated: 2024/08/15 18:29:45 by rgerdzhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,6 @@ int		ft_printf(char const *str, ...);
 int		ft_putchar(char c);
 int		ft_putstr(char *s);
 long	ft_putnbr(long n);
+int		ft_puthex(unsigned int n, int up);
+int		ft_putptr(void *pt);
 #endif
