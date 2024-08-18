@@ -6,7 +6,7 @@
 /*   By: rgerdzhi <rgerdzhi@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 14:05:34 by rgerdzhi          #+#    #+#             */
-/*   Updated: 2024/08/15 19:19:00 by rgerdzhi         ###   ########.fr       */
+/*   Updated: 2024/08/18 16:13:25 by rgerdzhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -24,10 +24,16 @@ int	ft_formatter(const char format, va_list args)
 		l = ft_putnbr(va_arg(args, int));
 	else if (format == 'u')
 		l = ft_putnbr(va_arg(args, unsigned int));
-	else if (format == 'x' || format == 'X')
-		l = ft_puthex(va_arg(args, unsigned int), format == 'X');
+	else if (format == 'x')
+		l = ft_puthex(va_arg(args, unsigned int), 0, "0123456789abcdef");
+	else if (format == 'X')
+		l = ft_puthex(va_arg(args, unsigned int), 0, "0123456789ABCDEF");
 	else if (format == 'p')
-		l = ft_putptr(va_arg(args, void *));
+		l = ft_puthex(va_arg(args, unsigned long), 1, "0123456789abcdef");
+	else if (format == '%')
+		l = ft_putchar('%');
+	if (l == -1)
+		return (-1);
 	return (l);
 }
 
@@ -57,15 +63,53 @@ int	ft_printf(const char *str, ...)
 	return (total_len);
 }
 /*
-int	main(void)
+int main(void)
 {
-	int num;
-	num = 0;
-	printf(" Len is: %d\n", ft_printf("Char: %c, %c, %c", 'B', '&', 'b'));
-	printf(" Len is: %d\n", ft_printf("Num: %d, %d, %d", -123, -7678, 762537));
-	printf(" Len is: %d\n", ft_printf("X: %x, %x, %X, %X", 2147483647, 17, 425, 
-	15));
-	printf(" Len is: %d\n", ft_printf("Ptr: %p", &num));
-	return (0);
+    //%c
+    printf("Original: %c, %c, %c\n", 'A', 'v', 'R');
+    ft_printf("Mine: %c, %c, %c\n", 'A', 'v', 'R');
+
+    //%s
+    printf("Original: %s, %s, %s\n", "Hello", "world", "ft_printf");
+    ft_printf("Mine: %s, %s, %s\n", "Hello", "world", "ft_printf");
+
+    //%i && %d
+    printf("Original: %d, %d, %d\n", 42, -42, 0);
+    ft_printf("Mine: %d, %d, %d\n", 42, -42, 0);
+
+    printf("Original (%%i): %i, %i, %i\n", 42, -42, 0);
+    ft_printf("Mine (%%i): %i, %i, %i\n", 42, -42, 0);
+
+    //%u
+    printf("Original: %u, %u, %u\n", 42, 4294967295u, 0);
+    ft_printf("Mine: %u, %u, %u\n", 42, 4294967295u, 0);
+
+    //%x
+    printf("Original: %x, %x, %x\n", 42, 255, 4096);
+    ft_printf("Mine: %x, %x, %x\n", 42, 255, 4096);
+
+    //%X
+    printf("Original: %X, %X, %X\n", 42, 255, 4096);
+    ft_printf("Mine: %X, %X, %X\n", 42, 255, 4096);
+
+    //%p
+    int a = 4586;
+    int *ptr = &a;
+    printf("Original: %p\n", ptr);
+    ft_printf("Mine: %p\n", ptr);
+
+    //%%
+    printf("Original: %%\n");
+    ft_printf("Mine: %%\n");
+
+    // Return value check
+    int len_original = printf("TEST: %c, %s, %d, %i, %u, %x, %X, %p, %%\n", 'A'
+	, "Test", 123, 456, 789u, 0xabc, 0xABC, ptr);
+    int len_custom = ft_printf("Custom Complete test: %c, %s, %d, %i, %u, %x, 
+	%X, %p, %%\n", 'A', "Test", 123, 456, 789u, 0xabc, 0xABC, ptr);
+    printf("Original Total length: %d\n", len_original);
+    ft_printf("Custom Total length: %d\n", len_custom);
+
+    return (0);
 }
 */

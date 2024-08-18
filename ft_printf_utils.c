@@ -6,7 +6,7 @@
 /*   By: rgerdzhi <rgerdzhi@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 20:27:26 by rgerdzhi          #+#    #+#             */
-/*   Updated: 2024/08/15 19:01:58 by rgerdzhi         ###   ########.fr       */
+/*   Updated: 2024/08/18 16:13:50 by rgerdzhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -66,44 +66,28 @@ long	ft_putnbr(long n)
 	return (len);
 }
 
-//%x && %X
-int	ft_puthex(unsigned int n, int up)
+//%x && %X && %p
+long	ft_puthex(unsigned long int n, int pointer, char *digits)
 {
-	char	*digits;
-	int		len;
+	int	len;
+	int	rt;
 
-	if (up)
-		digits = "0123456789ABCDEF";
-	else
-		digits = "0123456789abcdef";
 	len = 0;
+	if (pointer == 1)
+	{
+		if (ft_putstr("0x") == -1)
+			return (-1);
+		len += 2;
+	}
 	if (n >= 16)
 	{
-		len += ft_puthex((n / 16), up);
-		if (len == -1)
+		rt = ft_puthex((n / 16), 0, digits);
+		if (rt == -1)
 			return (-1);
+		len += rt;
 	}
 	if (ft_putchar(digits[n % 16]) == -1)
 		return (-1);
-	return (len + 1);
-}
-
-int	ft_putptr(void *ptr)
-{
-	char				*digits;
-	int					len;
-	unsigned long int	address;
-
-	len = 0;
-	digits = "0123456789abcdef";
-	address = (unsigned long int)ptr;
-	len += ft_putstr("0x");
-	while (address)
-	{
-		if (ft_putchar(digits[address % 16]) == -1)
-			return (-1);
-		len++;
-		address /= 16;
-	}
+	len++;
 	return (len);
 }
