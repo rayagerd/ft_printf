@@ -6,7 +6,7 @@
 /*   By: rgerdzhi <rgerdzhi@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 15:19:54 by rgerdzhi          #+#    #+#             */
-/*   Updated: 2024/08/18 15:27:24 by rgerdzhi         ###   ########.fr       */
+/*   Updated: 2024/08/19 17:53:40 by rgerdzhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 // Declarations from ft_printf.c
 int		ft_printf(char const *str, ...);
+int		ft_formatter(const char format, va_list args);
 // Declarations from ft_printf_utils.c
 int		ft_putchar(char c);
 int		ft_putstr(char *s);
