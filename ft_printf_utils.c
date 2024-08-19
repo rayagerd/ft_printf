@@ -6,7 +6,7 @@
 /*   By: rgerdzhi <rgerdzhi@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 20:27:26 by rgerdzhi          #+#    #+#             */
-/*   Updated: 2024/08/18 16:13:50 by rgerdzhi         ###   ########.fr       */
+/*   Updated: 2024/08/19 15:15:02 by rgerdzhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -72,8 +72,10 @@ long	ft_puthex(unsigned long int n, int pointer, char *digits)
 	int	len;
 	int	rt;
 
+	if (pointer == 1 && n == 0)
+		return (ft_putstr("(nil)"));
 	len = 0;
-	if (pointer == 1)
+	if (pointer == 1 && n != 0)
 	{
 		if (ft_putstr("0x") == -1)
 			return (-1);

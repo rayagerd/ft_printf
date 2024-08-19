@@ -6,7 +6,7 @@
 /*   By: rgerdzhi <rgerdzhi@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 14:05:34 by rgerdzhi          #+#    #+#             */
-/*   Updated: 2024/08/18 16:13:25 by rgerdzhi         ###   ########.fr       */
+/*   Updated: 2024/08/19 15:14:40 by rgerdzhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -65,51 +65,46 @@ int	ft_printf(const char *str, ...)
 /*
 int main(void)
 {
-    //%c
-    printf("Original: %c, %c, %c\n", 'A', 'v', 'R');
-    ft_printf("Mine: %c, %c, %c\n", 'A', 'v', 'R');
+    // Testing %c with null character and regular characters
+    printf("Original: %c, %c, %c, %c\n", 'A', 'v', 'R', '\0');
+    ft_printf("Mine: %c, %c, %c, %c\n", 'A', 'v', 'R', '\0');
 
-    //%s
-    printf("Original: %s, %s, %s\n", "Hello", "world", "ft_printf");
-    ft_printf("Mine: %s, %s, %s\n", "Hello", "world", "ft_printf");
+    // Testing %s with regular strings, empty string, and null pointer
+    printf("Original: %s, %s, %s, %s\n", "Hello", "world", "ft_printf", "");
+    ft_printf("Mine: %s, %s, %s, %s\n", "Hello", "world", "ft_printf", "");
 
-    //%i && %d
-    printf("Original: %d, %d, %d\n", 42, -42, 0);
-    ft_printf("Mine: %d, %d, %d\n", 42, -42, 0);
+    // Testing %i and %d with positive, negative, and zero values
+    printf("Original: %d, %d, %d, %i, %i, %i\n", 42, -42, 0, 42, -42, 0);
+    ft_printf("Mine: %d, %d, %d, %i, %i, %i\n", 42, -42, 0, 42, -42, 0);
 
-    printf("Original (%%i): %i, %i, %i\n", 42, -42, 0);
-    ft_printf("Mine (%%i): %i, %i, %i\n", 42, -42, 0);
+    // Testing %u with regular unsigned integers, maximum value, and zero
+    printf("Original: %u, %u, %u, %u\n", 42, 4294967295u, 0, (unsigned int)-1);
+    ft_printf("Mine: %u, %u, %u, %u\n", 42, 4294967295u, 0, (unsigned int)-1);
 
-    //%u
-    printf("Original: %u, %u, %u\n", 42, 4294967295u, 0);
-    ft_printf("Mine: %u, %u, %u\n", 42, 4294967295u, 0);
+    // Testing %x with positive numbers and edge cases (0 and max)
+    printf("Original: %x, %x, %x, %x\n", 42, 255, 4096, 0);
+    ft_printf("Mine: %x, %x, %x, %x\n", 42, 255, 4096, 0);
 
-    //%x
-    printf("Original: %x, %x, %x\n", 42, 255, 4096);
-    ft_printf("Mine: %x, %x, %x\n", 42, 255, 4096);
+    // Testing %X with positive numbers and edge cases (0 and max)
+    printf("Original: %X, %X, %X, %X\n", 42, 255, 4096, 0);
+    ft_printf("Mine: %X, %X, %X, %X\n", 42, 255, 4096, 0);
 
-    //%X
-    printf("Original: %X, %X, %X\n", 42, 255, 4096);
-    ft_printf("Mine: %X, %X, %X\n", 42, 255, 4096);
-
-    //%p
-    int a = 4586;
+    // Testing %p with a valid pointer, null pointer, and edge case
+    int a = 0;
     int *ptr = &a;
-    printf("Original: %p\n", ptr);
-    ft_printf("Mine: %p\n", ptr);
+    printf("Original: %p, %p, %p\n", ptr, NULL, (void *)-1);
+    ft_printf("Mine: %p, %p, %p\n", ptr, NULL, (void *)-1);
 
-    //%%
+    // Testing %% to print literal percentage signs
     printf("Original: %%\n");
     ft_printf("Mine: %%\n");
 
     // Return value check
-    int len_original = printf("TEST: %c, %s, %d, %i, %u, %x, %X, %p, %%\n", 'A'
-	, "Test", 123, 456, 789u, 0xabc, 0xABC, ptr);
-    int len_custom = ft_printf("Custom Complete test: %c, %s, %d, %i, %u, %x, 
-	%X, %p, %%\n", 'A', "Test", 123, 456, 789u, 0xabc, 0xABC, ptr);
+    int len_original = printf("TEST1: %c, %s, %d, %i, %u, %x, %X, %p, %%\n", 
+	'A', "Test", 123, 456, 789u, 0xabc, 0xABC, ptr);
+    int len_custom = ft_printf("TEST2: %c, %s, %d, %i, %u, %x, %X, %p, %%\n",
+	'A', "Test", 123, 456, 789u, 0xabc, 0xABC, ptr);
     printf("Original Total length: %d\n", len_original);
     ft_printf("Custom Total length: %d\n", len_custom);
-
     return (0);
-}
-*/
+}*/
